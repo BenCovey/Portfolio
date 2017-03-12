@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ben Covey C#</title>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/scripts.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Asap|Gudea:400,400italic,700">
+    <link href='//fonts.googleapis.com/css?family=Droid Sans' rel='stylesheet'>
+    <style>
+    body {
+        font-family: 'Droid Sans';font-size: 18px;
+    }
+    </style>
+    <link href="css/styles.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <h2>Ben Covey</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"><h4>Dashboard</h4></a>
+                </li>
+                <li>
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="java.html">Java</a></li>
+                        <li><a href="cpp.html">C++</a></li>
+                        <li><a href="csharp.html">C#</a></li>
+                        <li><a href="python.html">Python</a></li>
+                        <li><a href="richinternet.html">Rich Internet</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <h3>Outside of Class</h3>
+                    <ul>
+                        <li><a href="3DPrinting.html">3D Printing</a></li>
+                        <li><a href="electronics.html">Electronics Work</a></li>
+                        <li><a href="jarvis.html">Jarvis</a></li>
+                        <li><a href="tinkering.html">Tinkering</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Other</h3>
+                    <ul>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a target="_blank" href="http://www.github.com/bencovey/" class="github-link pull-right" ><img src="images/GitHub_Logo.png" height="35"><img src="images/GitHub-Mark-64px.png" height="35"/></a>
+                <a href="#menu-toggle" class="btn btn-hamburger " id="menu-toggle"><img src="images/hamburger.png" alt="hamburger-icon" height="35"></a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        
+                        <h1>C# </h1>
+                        <h3>Async Chat</h3>
+                        <p>The Async chat was a three assignment long program. That started as a console application that allowed chatting over a network, using port numbers, and IP addressed. It allowed the two clients to comunicate via synchronus messaging.</p>
+                        <img class="img-responsive" src="images/AsyncConsole.PNG" alt="Console Application">
+                        <p>By the second assignment it was built into a Windows form, and had logging capability. The third assignment added loosely coupled logging, and dependency injection, allowing us to plug any other classmates logging DLL into our project and it will work by just changing the 'using' statements.</p>
+                        <img class="img-responsive" src="images/AsyncGUI.PNG" alt="GUI Application of Async Chat">
+                        <button class="btn btn-default" onclick="showcode('async')">Show Code</button>
+                        <div class="code" style="display:none;" id="async">
+                            <pre>
+                                <code>
+Application.EnableVisualStyles();
+Application.SetCompatibleTextRenderingDefault(false);
+
+///&ltsummary>
+/// UNITY CONTAINER
+/// Using multiple loggers
+///&lt/summary>
+//UnityContainer container = new UnityContainer();
+//container.RegisterType&ltILoggingService, TextLogger>();
+//container.RegisterType&ltILoggingService, NLog>();
+//container.RegisterType&ltChatLogLib.ILoggingService, ChatLogLib.ChatLogger>();
+//Application.Run(container.Resolve&ltForm1>());
+///&ltsummary>
+/// Ninject Container
+/// Using multiple loggers
+/// &lt/summary>
+IKernel kernel = new StandardKernel();
+kernel.Bind&ltILoggingService>().To&ltTextLogger>();
+//kernel.Bind&ltILoggingService>().To&ltNLog>();
+//kernel.Bind&ltILoggingService>().To&ltChatLogger>();
+Application.Run(kernel.Get&ltForm1>());
+                                </code>
+                            </pre>
+                        </div>
+                        <h3>Media Player</h3>
+                        <p>This homemade media player can play .wav's or .mp4's. It is plays local file, and when you open the file dialog it open allows you to select limited file types. </p>
+                        <img src="images/mediaplayer.PNG" alt="Media Player GUI"/>
+                        <p>The media buttons are all custom, and the slider bar using DispatcherTimer an NaturalDuration to calculate where the slider should be and move it each tick. It also processes where you drag it and updates in real time.</p>
+                        <button class="btn btn-default" onclick="showcode('mediaplayer')">Show Code</button>
+                        <div class="code" style="display:none;" id="mediaplayer">
+                            <pre>
+                                <code>
+private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+{
+    //Set the dragging variable to true
+    userIsDraggingSlider = true;
+    MediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+}
+private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
+{
+    //set dragging varialbe to false and change the location in video to where
+    //you stopped dragging
+    userIsDraggingSlider = false;
+    MediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+}
+private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs&ltdouble> e)
+{
+    //Change the label to the value of the slider in formatting for h/m/s
+    lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
+}
+                                </code>
+                            </pre>
+                        </div>
+                        
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
