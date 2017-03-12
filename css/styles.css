@@ -3,3 +3,7 @@ body{
     background-image: url("background.png");
     color: aliceblue;
 }
+
+.form{
+    padding: 15px;
+}
