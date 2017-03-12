@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ben Covey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Droid Sans' rel='stylesheet'>
+    <style>
+    body {
+        font-family: 'Droid Sans';font-size: 18px;
+    }
+    </style>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/scripts.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    </script>
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Droid Sans';font-size: 18px;
+        }
+    </style>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <h2>Ben Covey</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"><h4>Dashboard</h4></a>
+                </li>
+                <li>
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="java.html">Java</a></li>
+                        <li><a href="cpp.html">C++</a></li>
+                        <li><a href="csharp.html">C#</a></li>
+                        <li><a href="python.html">Python</a></li>
+                        <li><a href="richinternet.html">Rich Internet</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <h3>Outside of Class</h3>
+                    <ul>
+                        <li><a href="3DPrinting.html">3D Printing</a></li>
+                        <li><a href="electronics.html">Electronics Work</a></li>
+                        <li><a href="jarvis.html">Jarvis</a></li>
+                        <li><a href="tinkering.html">Tinkering</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Other</h3>
+                    <ul>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a target="_blank" href="http://www.github.com/bencovey/" class="github-link pull-right" ><img src="images/GitHub_Logo.png" height="35"><img src="images/GitHub-Mark-64px.png" height="35"/></a>
+                <a href="#menu-toggle" class="btn btn-hamburger " id="menu-toggle"><img src="images/hamburger.png" alt="hamburger-icon" height="35"></a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Python</h1>
+                        <h3>Battleship</h3>
+                        <p>This was my first real python program. While looking at the code itself I see many errors, and poor practice, it was a milestone I have to include in my portfolio. As the first functional program built at NSCC.</p>
+                        <img src="images/battleship.png" alt="battleship Python">
+                        <p></p>
+                        
+                        <h3>Jarvis</h3>
+                        <p>While Jarvis has it's own page, the program deserves a highlight in my Python Page</p>
+                        <img src="images/jarvis.PNG" alt="Jarvis Program">
+                        <p>The majority of the program is outlined under the page <a href="jarvis.html">Jarivs</a> though as a brief description. The program uses voice recognition and voice synthesizer to be the ultimate personal assistant, the program can tell you the weather, get top stories, make notes, search for files. Run application, google things for you. And many more things. The voice recognition works in real time, and the program runs in two modes, the main mode and an idle. The main mode is ready to do all the functions that it can, the idle mode activates after no use in 30 minutes, and closes the main program and runs a timed loop and listens for the keyword 'Jarvis' to reactivate.</p>
+                        <button class="btn btn-default" onclick="showcode('jarvis')">Show Code</button>
+                        <div class="code" style="display:none;" id="jarvis">
+                            <pre>
+                                <code>
+voiceIn = ""
+print("                                          _____    ____ _    ___________             ")
+print("                                         / /   |  / __ \ |  / /  _/ ___/            ")
+print("                                    __  / / /| | / /_/ / | / // / \__ \             ")
+print("                                   / /_/ / ___ |/ _, _/| |/ // / ___/ /             ")
+print("                                   \____/_/  |_/_/ |_| |___/___//____/              ")
+print("                           _       __     __                             _____ _      ")
+print("                          | |     / /__  / /________  ____ ___  ___     / ___/(_)____   ")
+print("                          | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \    \__ \/ / ___/  ")
+print("                          | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/   ___/ / / /     ")
+print("                          |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/   /____/_/_/      ")
+//__lib__.engine() is the voice synthesizer.
+__lib__.engine(welcome)
+
+while(voiceIn != "quit"):
+    voiceIn = __lib__.record()
+    voiceIn = voiceIn.lower()
+    __lib__.sender(voiceIn)
+    __lib__.CheckAlarm()
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

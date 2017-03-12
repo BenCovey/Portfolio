@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ben Covey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Droid Sans' rel='stylesheet'>
+    <style>
+    body {
+        font-family: 'Droid Sans';font-size: 18px;
+    }
+    </style>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/scripts.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    </script>
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Droid Sans';font-size: 18px;
+        }
+    </style>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <h2>Ben Covey</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"><h4>Dashboard</h4></a>
+                </li>
+                <li>
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="java.html">Java</a></li>
+                        <li><a href="cpp.html">C++</a></li>
+                        <li><a href="csharp.html">C#</a></li>
+                        <li><a href="python.html">Python</a></li>
+                        <li><a href="richinternet.html">Rich Internet</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <h3>Outside of Class</h3>
+                    <ul>
+                        <li><a href="3DPrinting.html">3D Printing</a></li>
+                        <li><a href="electronics.html">Electronics Work</a></li>
+                        <li><a href="jarvis.html">Jarvis</a></li>
+                        <li><a href="tinkering.html">Tinkering</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Other</h3>
+                    <ul>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a target="_blank" href="http://www.github.com/bencovey/" class="github-link pull-right" ><img src="images/GitHub_Logo.png" height="35"><img src="images/GitHub-Mark-64px.png" height="35"/></a>
+                <a href="#menu-toggle" class="btn btn-hamburger " id="menu-toggle"><img src="images/hamburger.png" alt="hamburger-icon" height="35"></a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1>Rich Internet Applications (Javascript, PHP)</h1>
+                        <h3>Laravel CMS Site</h3>
+                        <p>The final project of the PHP course, a functional CMS site, containing different types of users, with different authentication levels.</p>
+                        <p>Photo available shortly.</p>
+                        <p>The ability to add pages, sections, articles were allowable to authors, editors could create and add articles, admins could manage users. Any user could have any number of permissions. The code below is from the User Controller class, showing the update function.</p>
+                        <button class="btn btn-default" onclick="showcode('laravel')">Show Code</button>
+                        <div class="code" style="display:none;" id="laravel">
+                            <pre>
+                                <code>
+public function update(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|min:6',
+            'password' => 'min:8',
+        ]);
+        $id = $request->input('id');
+        $username= $request->input('username');
+        $User = User::find($id);
+        $User->username = $username;
+        if($request->input('password') != null){
+            $password = $request->input('password');
+            $User->password = hash::make($password);
+        }
+        $User->save();
+        return back();
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        
+                        <h3>TwoNote (One Note API Usage)</h3>
+                        <p>A OneNote clone, that allows you to use OAuth() to authenticate users with microsoft then sign them in with the acess token. From there using ajax calls you are able to add, modify, and delete notes in real time.</p>
+                        <img src="images/twoNote.PNG" alt="TwoNote Page" width ="800">
+                        <p>The difficulty in the application was mostly documentation, though it was also our first assignment relying completely on an API to get results.</p>
+                        <button class="btn btn-default" onclick="showcode('onenote')">Show Code</button>
+                        <div class="code" style="display:none;" id="onenote">
+                            <pre>
+                                <code>
+function onLogin (session) {
+    if (!session.error) {
+        sess = session;
+        $.ajax({
+           url: "https://www.onenote.com/api/v1.0/me/notes/pages",
+           type: "GET",
+           beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization','Bearer ' + sess.session.access_token);
+           },
+           success: function(data){
+           showElements();
+           var list = $('#Notes');
+           if(data.value != null){
+               notes = data;
+               console.log(data.value[0].body);
+               console.log(data.value[0].title);
+                $("#Body").val(data.value[0].body);
+                $("#NoteTitle").val(data.value[0].title);
+                for(var i = 0; i &lt; data.value.length; i++){
+                    if(i != 0){
+                            list.append('&lt;li id="wellnote' + i + '" class = "well well-sm">&l;ta id = "note' + i + '" onclick="displayNote('+i+')">' + data.value[i].title + "&lt;/a>&lt;/li>");
+                        }else{
+                            list.append('&lt;li id="wellnote' + i + '" class = "well active">&lt;a  id = "note' + i + '" onclick="displayNote('+i+')">' + data.value[i].title + '&lt;/a>&lt;i class=" fa fa-arrow-left" aria-hidden="true">&lt;/i>&lt;/li>');
+                        }
+                    }//end for
+                }//end if
+            },
+            error: function(response) {
+                alert(response.status + " " + response.statusText);
+                console.log(response.statusText);
+                console.log(response);
+                console.log(response.status + " " + response.statusText);
+            }
+        });
+        WL.api({
+            path: "me",
+            method: "GET"
+        }).then(
+            function (response, session) {
+                  console.log("Logged In.");
+                  name = response.first_name + " " + response.last_name;
+                  email = response.email;
+            },
+            function (responseFailed) {
+               alert("Error calling API: " + responseFailed.error.message);
+            }
+        );
+    }
+    else {
+            alert("Error signing in: " + session.error_description);
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ben Covey</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Droid Sans' rel='stylesheet'>
+    <style>
+    body {
+        font-family: 'Droid Sans';font-size: 18px;
+    }
+    </style>
+    <link href="css/styles.css" rel="stylesheet">
+    
+
+    
+</head>
+
+<body class = main id = main>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <h2>Ben Covey</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html"><h4>Dashboard</h4></a>
+                </li>
+                <li>
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="java.html">Java</a></li>
+                        <li><a href="cpp.html">C++</a></li>
+                        <li><a href="csharp.html">C#</a></li>
+                        <li><a href="python.html">Python</a></li>
+                        <li><a href="richinternet.html">Rich Internet</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <h3>Outside of Class</h3>
+                    <ul>
+                        <li><a href="3DPrinting.html">3D Printing</a></li>
+                        <li><a href="electronics.html">Electronics Work</a></li>
+                        <li><a href="jarvis.html">Jarvis</a></li>
+                        <li><a href="tinkering.html">Tinkering</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Other</h3>
+                    <ul>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a target="_blank" href="http://www.github.com/bencovey/" class="github-link pull-right" ><img src="images/GitHub_Logo.png" height="35"><img src="images/GitHub-Mark-64px.png" height="35"/></a>
+                <a href="#menu-toggle" class="btn btn-hamburger " id="menu-toggle"><img src="images/hamburger.png" alt="hamburger-icon" height="35"></a>
+                <div class="row">
+                    <div class="col-lg-8">
+                        
+                        <h1>Java</h1>
+                        <h3>Android Calculator</h3>
+                        <p>Android calculator modeled and color matched for an iOS calculator. All functions work as expected, and rolls as a regular calculator.</p>
+                        <img class="img-responsive" src="images/javacalculator.PNG" alt="Java Calculator Interface">
+                        <p>A rolling calculator built for android. It was the first android application that demonstrating multi class applications in an Android Application. Containing many OnClick events, it was a great project to show off code organization in a program, and excellent program to learn the Android architecture. Below is the main running code of the calculator with functions in a calculate class. The full code can be found on my github. Which is in the top right.</p>
+                        <button class="btn btn-default" onclick="showcode('calculator')">Show Code</button>
+                        <div class="code" style="display:none;" id="calculator">
+                            <pre>
+                                <code>
+public class Calculate {
+    int TypeMath = 0;
+    String txtString = "NULL";
+    public String doCalc(String num, String num2){
+    /**
+    * Math int Type:
+    * 0 - None
+    * 1 - Subtract
+    * 2 - Add
+    * 3 - Multiply
+    * 4 - Divide
+    */
+    double Number1 = 0;
+    double Number2;
+    try {
+        Number1 = Double.parseDouble(num);
+        Number2 = Double.parseDouble(num2);
+    }catch(Exception E){
+        Number2 = 0;
+    }
+    if(TypeMath ==1){
+        Number1 = Number1 - Number2;
+        txtString = "" + Number1;
+    }else if(TypeMath == 2){
+        Number1 = Number1 + Number2;
+        txtString = "" + Number1;
+    }else if(TypeMath == 3){
+        Number1 = Number1 * Number2;
+        txtString = "" + Number1;
+    }else if(TypeMath ==4){
+        if(Number1 == 0 || Number2 == 0){
+            txtString = "ERROR";
+        }else {
+            Number1 = Number1 / Number2;
+            txtString = "" + Number1;
+            }
+    }
+        return txtString;
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                        <h3>Quiz Builder (Android)</h3>
+                        <p>This application was a quiz builder where you could build and then run through quizzes. It was actually used by me a few times for in school studying as it was quick and worked well.</p>
+                        <img src="images/quizbuilder.PNG" alt="Quiz Builder Question Screen"/>
+                        <p>The quiz builder was our first assignment that required multiple screens. Also required you enter your name when you start the application and it would pass that Name through the activities.</p>
+                        <button class="btn btn-default" onclick="showcode('quizbuilder')">Show Code</button>
+                        <div class="code" style="display:none;" id="quizbuilder">
+                            <pre>
+                                <code>
+if (button.equals(a.get(question - 1)[1])) {
+    Toast.makeText(mainActivity.this, "Correct. Press Next to Continue", Toast.LENGTH_SHORT).show();
+    Choice1.setEnabled(false);
+    Choice2.setEnabled(false);
+    Choice3.setEnabled(false);
+    Choice4.setEnabled(false);
+    Next.setEnabled(true);
+    score++;
+    qnumber++;
+    }
+                                </code>
+                            </pre>
+                        </div>
+                        <h3>Movie Trailers (Android)</h3>
+                        <p>This application was built to stream trailers from the internet. It used a database with the title, description, and link to the video which was to be streamed.</p>
+                        <img src="images/films.png"/>
+                        <p>After we streamed it we would play it in a seperate activity with custom made media buttons, as well as a slider to display time. The cover is the trailer was also streamed from the internet alongside the video. The application also had a rating system that updated the rating in the database so ratings you set would stay even after stopping the application. </p>
+                        <button class="btn btn-default" onclick="showcode('films')">Show Code</button>
+                        <div class="code" style="display:none;" id="films">
+                            <pre>
+                                <code>
+public class TrailerActivity extends AppCompatActivity {
+    VideoView videoView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_trailer);
+        final String url = getIntent().getStringExtra("VIDEO_URL");
+        // Find your VideoView in your video_main.xml layout
+        videoView = (VideoView) findViewById(R.id.videoView);
+        String path1="";
+
+        Uri uri=Uri.parse(url);
+
+        VideoView video=(VideoView)findViewById(R.id.videoView);
+        video.setVideoURI(uri);
+        video.start();
+    }
+}
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/scripts.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    </script>
+
+</body>
+
+</html>
