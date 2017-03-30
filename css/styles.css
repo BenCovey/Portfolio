@@ -7,7 +7,13 @@ body{
 .form{
     padding: 15px;
 }
-
+a img{
+    height:35px !important;
+    width: auto;
+}
+img{
+    width:100%;
+}
 .rotate90 {
     padding-top: 200px;
     -webkit-transform: rotate(90deg);
