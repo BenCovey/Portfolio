@@ -54,6 +54,7 @@
 
 /* Sidebar Styles */
 
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -101,6 +102,9 @@
 }
 
 @media(min-width:768px) {
+    #nav.toggled{
+     padding-left:0px;
+    }
     #wrapper {
         padding-left: 250px;
     }

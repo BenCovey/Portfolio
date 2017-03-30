@@ -99,6 +99,45 @@
                     <div class="col-lg-8 col-md-offset-2">
                         
                         <h1>C# </h1>
+                        <h3>Youtube API app</h3>
+                        <p>A C# application using the Youtube Data API v2, to get results search results from youtube, then fill a list of video models, including a streamable link. By clicking on the video title you can watch the video ad free..</p>
+                        <img class="img-responsive" src="images/youtubeplayer.png" alt="Console Application">
+                        <p>The app can search asynchronusly so you can search while you watch. The app includes a settings page that allows you change how many search results you get back.</p>
+                        <button class="btn btn-default" onclick="showcode('youtube')">Show Code</button>
+                        <div class="code" style="display:none;" id="youtube">
+                            <pre>
+                                <code>
+private async Task<ObservableCollection&ltVideos>> Run(string query)
+        {
+            ObservableCollection&ltVideos> vidlist = new ObservableCollection&ltVideos>();
+            var youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = "AIzaSyAEmP6-BFQbwDeVmYkA0fK2fpA_oTTJrv0",
+                ApplicationName = this.GetType().ToString()
+            });
+            var searchListRequest = youtubeService.Search.List("snippet");
+            searchListRequest.Q = query; // Replace with your search term.
+            searchListRequest.MaxResults = maxResults;
+            // Call the search.list method to retrieve results matching the specified query term.
+            var searchListResponse = await searchListRequest.ExecuteAsync();
+            // Add each result to the appropriate list, and then display the lists of
+            // matching videos, channels, and playlists.
+            foreach (var searchResult in searchListResponse.Items)
+            {
+                switch (searchResult.Id.Kind)
+                {
+                    case "youtube#video":
+                        vidlist.Add(new Videos(searchResult.Id.VideoId, searchResult.Id.ChannelId, searchResult.Snippet.Title,+
+                        searchResult.Snippet.Description, "https://youtube.com/embed/" + searchResult.Id.VideoId,+
+                        searchResult.Snippet.Thumbnails.Default__));
+                        break;
+                }
+            }
+            return vidlist;
+        }
+                                </code>
+                            </pre>
+                        </div>
                         <h3>Async Chat</h3>
                         <p>The Async chat was a three assignment long program. That started as a console application that allowed chatting over a network, using port numbers, and IP addressed. It allowed the two clients to comunicate via synchronus messaging.</p>
                         <img class="img-responsive" src="images/AsyncConsole.PNG" alt="Console Application">
