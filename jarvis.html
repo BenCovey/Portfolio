@@ -81,10 +81,41 @@
                 <a target="_blank" href="http://www.github.com/bencovey/" class="github-link pull-right" ><img src="images/GitHub_Logo.png" height="35"><img src="images/GitHub-Mark-64px.png" height="35"/></a>
                 <a href="#menu-toggle" class="btn btn-hamburger " id="menu-toggle"><img src="images/hamburger.png" alt="hamburger-icon" height="35"></a>
                 <div class="row">
-                    <div class="col-lg-8">
-                        <h1>My Website</h1>
-                        <h3>This site is currently under construction</h3>
+                    <div class="col-lg-8 col-md-offset-2">
+                        <h1>Jarvis (Python)</h1>
+                        <h3>Introduction</h3>
+                        <p>Jarvis has been my side project since I started going to school. A python program that has no interface, it is completely controlled via voice recognition. The application is currently capable
+                        of controlling parts of a computer, opening and closing applications.  Jarvis can also create notes (Soon to be integrated into google drive for cloud storage across multiple PC's), check and filter my email into corrosponding labels, spam, important, inbox. Setting multiple alarms, giving a detailed current weather or forecast using a json object from <a href="http://openweathermap.org/">Openweathermap</a>. Jarvis can also search via google, for images or plain search, and select search queries to open the page. Jarvis can navigate chrome, opening new tabs, websites, or changing tabs, plus closing of course. The program can also type for you, or enter special key inputs. Keep in mind this list is ever expanding as I have more and more time to work on the project. The final goal would be complete control of my computer, including a mobile phone version so I can control my pc via from while away from home.
                         
+                        </p>
+                        <pre>
+                            <code>
+class jarvis(object):<b>Class definition</b>
+    print("Jarvis Main")<b>Print Jarvis To Console</b>
+
+    for x in range(250): <b>Run 250 times</b>
+        voiceIn = lib.record() <b>voiceIn is the string that the recorded string becomes</b>
+        lib.functioncheck(voiceIn) <b>voiceIn is compared against functions after being stripped down. If functions match it executes the function</b>
+
+    os.system('/__main__.py')<b>After program runs 250 open the idle program, closing this one.</b>
+                            </code>
+                        </pre>
+                        <p><small>I have added pseudo code so it is easier to understand.</small><br> This is the main running body of the application. It starts up, prints to console the main program is running (during idle a smaller lighter weight program runs), and when it hears something it sends that recording as a string into the functioncheck() method. Which will check then strip that string down into a simple request. If the program finds the request to match a parameter it will execute that function of the program then re run. This program will run 250 times, which in an office enviroment will last about 25 minutes. The time that this program will run does depend on noise levels.
+                        </p>
+                        <img src="images/jarvisoutput1.pnh.PNG" alt="Jarvis Weather Output" width="800">
+                        <p><small>Weather output for today.</small></p>
+                        <img src="images/jarviscake.png" width="100%" alt="Jarvis Console Cake">
+                        <p><small>Yeilds results</small></p>
+                        <img src="images/cake2.png" alt="Cake Images" width="100%">
+                        <img src="images/cake3.png" alt="Cake Search" width="100%">
+                        <p>This is just one of the many functions jarvis can perform. It opens a new instance of chrome, as I do not have one open, and will open two new tabs
+                        one searching how to bake a cake, the other for images of cakes. I find this exceptionally useful when I am busy coding and require a search made while typing. That and full screen games as no tabbing out of the game is required.</p>
+                        <img src=images/jarvistype.png alt="Jarvis Type Console"  width="100%">
+                        <p><small>The request for Jarvis to type the following phrase out.</small></p>
+                        <img src=images/jarvistype2.png alt="Results of Typing" width="100%">
+                        <p><small>The results of the above photo where Jarvis is instructed to type out a phrase.</small></p>
+                        
+                        <p><b>More Examples to come the Library file for Jarvis can be found <a href="https://github.com/BenCovey/Jarvis-Python/blob/master/library/__init__.py">here</a></b><br> </p>
                     </div>
                 </div>
             </div>
