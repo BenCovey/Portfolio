@@ -12,7 +12,9 @@ a img{
     width: auto;
 }
 img{
-    width:100%;
+    width:auto;
+    max-height: 700px;
+    max-width: 100%;
 }
 .rotate90 {
     padding-top: 200px;
