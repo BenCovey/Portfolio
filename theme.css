@@ -1,0 +1,23 @@
+ * {
+            margin: 0;
+        }
+        .accordionInner {
+            padding-bottom: 5px;
+            font-family: arial
+        }
+        .accordionInner .accordionHead {
+            background: #f4f4f4;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .accordionCnt p {
+            padding: 0 15px;
+        }
+        .accordionCnt {
+            display: none;
+        }
+        .accordion {
+            width: 320px;
+            margin: 0 auto;
+        }
