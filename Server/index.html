@@ -191,21 +191,8 @@ div.thumbnail .glyphicon-ok-circle{
       <div class="container text-center">
         <h1>Welcome AverageCraft</h1>
         <p class="lead">You can view Online players, current chat, and submit tickets, and enhancement ideas.</p>
-                      <div class="server-status">
-              Server is currently <span class="server-online"></span>!
-            </div>
-            <script>
-              MinecraftAPI.getServerStatus('mc.isaacjones.com', {
-                port: 25565 // optional, only if you need a custom port
-              }, function (err, status) {
-                if (err) {
-                  return document.querySelector('.server-status').innerHTML = 'Error loading status';
-                }
 
-                // you can change these to your own message!
-                document.querySelector('.server-online').innerHTML = status.online ? 'up' : 'down';
-              });
-            </script>
+             
       </div>
     </header>
 
@@ -213,28 +200,45 @@ div.thumbnail .glyphicon-ok-circle{
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>List of online players:</h2>
+            
               <div class="containers">
                   <p id="lastUpdate"></p>
-                    <p id="version">Loading Minecraft Version...</p>
+                    <p id="domain">Loading Minecraft Domain...</p>
                     <p id="serverVersion">Loading Server Version...</p>
-                    <h1 id="online">Loading Server...</h1>
-                    <h2>List of online players:</h2><p id="playerListHTML">Loading players...</p>
-                    <script>$.getJSON('https://mcapi.us/server/status?ip=mc.isaacjones.com&port=25565', function(data) {
-                    document.getElementById('lastUpdate').textContent="Last Update: "+data.last_update+"(GMT-6)";
-                    document.getElementById('version').textContent="Minecraft Version: MC Release V. "+data.version;
-                    document.getElementById('serverVersion').textContent="Server MOTD: "+data.motd;
-                    if(data.status=="success"){
-                    document.getElementById('online').textContent = "Server is online!";
-                    if(data.players === 0){
-                         document.getElementById('playerListHTML').textContent = "No players are currently online.";
-                    }else{
-                         document.getElementById('playerListHTML').textContent = data.playerList;
-                    }
-                    }else{
-                    document.getElementById('online').textContent = "Server is not online... try again later.";
-                    document.getElementById('playersListHTML').textContent = "Server is not online... try again later.";
-                    }
+                    <p id="serverName">Loading Server Name...</p>
+                    <p id="playerCount"></p>
+                    <p id="playerListHTML">Loading players...<text style="font-size:8px;">Sidenote: Player loading typically is delayed</text></p>
+                    
+                    <script>
+                        //$.getJSON('https://mcapi.us/server/status?ip=142.44.191.15&port=26199', function(data) {
+                        $.getJSON('https://minecraft-statistic.net/en/server/142.44.191.15_26199/json/', function(data) {
+                            console.log(data);
+                            //document.getElementById('lastUpdate').textContent="Last Update: "+data.last_update+"(GMT-6)";
+                            document.getElementById('domain').textContent="Domain: "+data.domain + ":" + data.port;
+                            document.getElementById('serverVersion').textContent="Server MOTD: "+data.info.version;
+                            document.getElementById('serverName').textContent="Server Name: "+data.info.name;
+                            document.getElementById('playerCount').textContent="Player Count: " + data.info.players;
+                            if(data.status=="success"){
+                            document.getElementById('online').text = "Server is online!";
+                            if(data.players === 0){
+                                 document.getElementById('playerListHTML').text = "No players are currently online.";
+                            }else{
+
+
+                            }
+
+                            }else{
+                            document.getElementById('online').text = "Server is not online... try again later.";
+                            //document.getElementById('playersListHTML').text = "Server is not online... try again later.";
+                            }
+                                    console.log(data.info.players_list)
+                            document.getElementById('playerListHTML').innerHTML ="<b>Player List:</b>";
+                            for (i = 0; i < data.info.players_list.length; i++) { 
+                                        console.log(data.info.players_list[1])
+                                        document.getElementById('playerListHTML').innerHTML += "<p>" + data.info.players_list[i] + "\n\r</p>";
+                                    }
+
+            
                     });</script>
                 </div>
           </div>
@@ -246,8 +250,8 @@ div.thumbnail .glyphicon-ok-circle{
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Services we offer</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+            <h2>Live Chat</h2>
+            <p class="lead">Live Chat goes here.</p>
           </div>
         </div>
       </div>
